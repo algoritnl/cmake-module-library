@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 AlgorIT Software Consultancy <https://github.com/algoritnl>
+# SPDX-License-Identifier: CC0-1.0
+
+# https://github.com/koalaman/shellcheck/wiki/Directive
+external-sources=true
+source-path=tests
+
+# https://github.com/koalaman/shellcheck/wiki/Optional
+enable=add-default-case
+enable=avoid-negated-conditions
+enable=avoid-nullary-conditions
+enable=check-extra-masked-returns
+enable=check-set-e-suppressed
+enable=check-unassigned-uppercase
+enable=deprecated-which
+enable=quote-safe-variables
+enable=require-double-brackets
+enable=require-variable-braces
+enable=useless-use-of-cat
+
+# Use foo "$@" if function's $1 should mean script's $1.
+disable=SC2119

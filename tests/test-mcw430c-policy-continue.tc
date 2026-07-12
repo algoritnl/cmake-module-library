@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 AlgorIT Software Consultancy <https://github.com/algoritnl>
+# SPDX-License-Identifier: CC0-1.0
+
+cmut_generate_cb() {
+    cat -- <<EOF
+cmake_minimum_required(VERSION 3.16...4.3)
+project(${1} LANGUAGES NONE)
+
+set(CMAKE_MESSAGE_LOG_LEVEL TRACE)
+set(CMAKE_MESSAGE_CONTEXT_SHOW TRUE)
+
+include("${2}/MultipleChoice.cmake")
+
+set(COLOR yellow CACHE STRING "")
+multiple_choice(
+    COLOR
+    VALID_VALUES red green blue
+)
+EOF
+}
+
+cmut_assert_cb() {
+    cmut_assert_run_success &&
+    cmut_assert_stderr_contains "[MCW430c:COLOR]" &&
+    cmut_assert_stdout_contains "[MCD510:COLOR] Value = 'yellow'"
+}
